@@ -1,14 +1,30 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <core-toolbar></core-toolbar>
+    <v-container>
+      <router-view />
+    </v-container>
+    <v-footer app>
+      <primary class="px-4 text-primary">&copy; {{ new Date().getFullYear() }} power by Vuetify</primary>
+    </v-footer>
+  </v-app>
 </template>
 
+<script>
+export default {
+  name: "App",
+  components: {
+    CoreToolbar: () => import("@/components/core/Toolbar")
+  },
+};
+</script>
+
 <style lang="scss">
+  // 屏蔽vuetify 默认code标签的阴影
+.hljs code{
+    box-shadow: 0 0 0 0;
+    font-weight: 300;
+  }
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
